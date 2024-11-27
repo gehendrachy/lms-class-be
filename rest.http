@@ -1,0 +1,54 @@
+@rootURL = http://localhost:8000
+@apiEP = {{rootURL}}/api/v1
+@userAPI = {{apiEP}}/users
+@bookAPI = {{apiEP}}/books
+
+### Post user 
+POST {{userAPI}}
+Content-Type: application/json
+
+{
+    "fName": "test",
+    "lName": "shrestha",
+    "phone": "4104444444",
+    "email": "test@gmail.com",
+    "password": "123456"
+}
+
+### Login user 
+POST {{userAPI}}/login
+Content-Type: application/json
+
+{
+    "email": "test@gmail.com",
+    "password": "123456"
+}
+
+### user profile
+GET {{userAPI}}
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RAZ21haWwuY29tIiwiaWF0IjoxNzMyNjY2MDkwLCJleHAiOjE3MzI2NjY5OTB9.vT6eVHSlnv9UH2V-UOvlGZsmFvOmcMgkJ-TEKAvGsag
+
+### get new access jwt
+GET {{userAPI}}/refresh-accessjwt
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RAZ21haWwuY29tIiwiaWF0IjoxNzMyNjY2MDkwLCJleHAiOjE3MzUyNTgwOTB9.O_3N1RWCDi8q00HSy5o0llnM6Lu2q7eqSO8773zjwPg
+
+
+### create Book
+POST {{bookAPI}}
+Content-Type: application/json
+
+{
+  "status": "active",
+  "title": "The Great Gatsby",
+  "author": "F. Scott Fitzgerald",
+  "isbn": "9780743273565",
+  "publishedYear": 1925,
+  "thumbnail": "https://example.com/thumbnail.jpg",
+  "description": "A novel set in the Roaring Twenties that examines themes of wealth, love, and the American Dream.",
+  "isAvailable": true,
+  "expectedAvailable": null
+}
+
+
+### get All Books
+GET {{bookAPI}}
